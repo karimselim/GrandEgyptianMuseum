@@ -1,12 +1,12 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { useRef, useEffect, useState, useMemo } from "react";
 import Scene from "@/app/components/scenes/MainScene";
-import { Rye } from "next/font/google";
-
-const font = Rye({
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import CurvedText from "@/app/components/common/CurvedText";
 
 const HIEROGLYPHS = ["𓀀", "𓀁", "𓀂", "𓀃", "𓀄", "𓀅", "𓀆", "𓀇"];
 const NUM_SAND_PARTICLES = 200;
@@ -127,40 +127,11 @@ const Landing = () => {
         <Scene scale={1.7} />
       </motion.div>
 
-      <div
-        className={`absolute w-full h-full ${font.className}`}
-        style={{ pointerEvents: "none" }}
-      >
-        <motion.h1
-          custom={0}
-          variants={textVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-[#ccaf08] text-6xl md:text-8xl absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_12px_rgba(255,215,0,0.5)]"
-        >
-          Grand
-        </motion.h1>
-
-        <motion.h1
-          custom={1}
-          variants={textVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-[#ccaf08] text-6xl md:text-8xl absolute top-1/2 left-4/5 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_12px_rgba(255,215,0,0.5)]"
-        >
-          Egyptian
-        </motion.h1>
-
-        <motion.h1
-          custom={2}
-          variants={textVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-[#ccaf08] text-6xl md:text-8xl absolute top-[85%] left-1/2 -translate-x-1/2 -translate-y-1/3 drop-shadow-[0_0_12px_rgba(255,215,0,0.5)]"
-        >
-          Museum
-        </motion.h1>
-      </div>
+      <AnimatePresence>
+        <div style={{ textAlign: "center", padding: "2rem" }}>
+          <CurvedText text="Grand Egyptian Museum" fontSize="58px" />
+        </div>
+      </AnimatePresence>
 
       <motion.div
         className="absolute inset-0 pointer-events-none"

@@ -77,7 +77,7 @@ const HoverControls = ({
   return null;
 };
 
-const Scene = ({ scale }) => {
+const Scene = () => {
   const progress = useProgress();
   return (
     <Canvas camera={{ position: [0, 250, 700], fov: 45 }}>
