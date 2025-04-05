@@ -1,21 +1,19 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-const ScaleFadeTextReveal = () => {
+const TextRevealAnimation = () => {
   const text =
-    "this is some placeholder for the about of the Museum as a placeholder";
+    "This is some placeholder for the about of the Museum as a placeholder";
 
-  // Split text into words for animation
   const words = text.split(" ");
 
-  // Variants for container
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.2,
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
       },
     },
     exit: {
@@ -27,27 +25,24 @@ const ScaleFadeTextReveal = () => {
     },
   };
 
-  // Variants for each word
   const child = {
     hidden: {
       opacity: 0,
-      scale: 0.95,
-      filter: "blur(2px)",
+      scale: 0.9,
     },
     visible: {
       opacity: 1,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         type: "spring",
-        damping: 15,
-        stiffness: 200,
+        stiffness: 100,
+        damping: 25,
+        duration: 0.6,
       },
     },
     exit: {
       opacity: 0,
-      scale: 0.95,
-      filter: "blur(2px)",
+      scale: 0.9,
       transition: {
         duration: 0.3,
       },
@@ -71,9 +66,11 @@ const ScaleFadeTextReveal = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        fontWeight: "bold",
+        textAlign: "center",
       }}
     >
-      <motion.div style={{ textAlign: "center" }}>
+      <motion.div>
         {words.map((word, index) => (
           <motion.span
             key={index}
@@ -81,7 +78,6 @@ const ScaleFadeTextReveal = () => {
             style={{
               marginRight: "8px",
               display: "inline-block",
-              transformOrigin: "bottom center",
             }}
           >
             {word}
@@ -92,4 +88,4 @@ const ScaleFadeTextReveal = () => {
   );
 };
 
-export default ScaleFadeTextReveal;
+export default TextRevealAnimation;
