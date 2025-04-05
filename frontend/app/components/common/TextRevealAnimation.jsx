@@ -3,7 +3,7 @@ import React from "react";
 
 const TextRevealAnimation = () => {
   const text =
-    "This is some placeholder for the about of the Museum as a placeholder";
+    "Welcome to the Grand Egyptian Museum, where history, culture, and innovation come together. Step into a world where the wonders of ancient Egypt meet cutting-edge technology, bringing the past to life in breathtaking detail. Explore our exhibits and immerse yourself in a timeless journey through civilization’s greatest treasures.";
 
   const words = text.split(" ");
 
