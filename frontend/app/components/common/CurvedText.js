@@ -60,8 +60,8 @@ const CurvedText = ({ text, fontSize = "40px" }) => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
-                  delay: 2 + index * 0.05, // starts after path draws in (2s), then stagger
-                  duration: 0.4,
+                  delay: 2 + index * 0.05,
+                  duration: 0.8,
                 }}
               >
                 {letter}
