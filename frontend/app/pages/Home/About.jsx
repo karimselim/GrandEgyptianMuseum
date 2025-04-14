@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function About() {
   const [isDesignerHovered, setDesignerHovered] = useState(false);
+  //test karim
 
   useEffect(() => {
     const handleScroll = () => {
