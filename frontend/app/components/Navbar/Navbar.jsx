@@ -67,7 +67,7 @@ export default function Navbar({ isMenuToggled, setIsMenuToggled }) {
         onClick={() => setIsMenuToggled(!isMenuToggled)}
       >
         <Hamburger
-          size={20}
+          size={24}
           duration={0.4}
           toggled={isMenuToggled}
           onToggle={(toggle) => setIsMenuToggled(toggle)}
