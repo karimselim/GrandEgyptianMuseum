@@ -5,7 +5,20 @@ import img2 from "../../assets/first.jpeg";
 import img3 from "../../assets/pic.jpeg";
 import img4 from "../../assets/second.jpeg";
 
-const imgs = [img1, img2, img3, img4];
+const imgs = [
+  img1,
+  img2,
+  img3,
+  img4,
+  img1,
+  img2,
+  img3,
+  img4,
+  img1,
+  img2,
+  img3,
+  img4,
+];
 console.log(imgs);
 
 const Monuments = () => {
