@@ -25,12 +25,7 @@ export default function Afrocentrism() {
         className="absolute h-full w-full top-0 left-0 origin-center pointer-events-none z-[5]"
         style={{ scale: 2.0 - +progress }}
       >
-        <Image
-          src={"/imgs/afro.png"}
-          alt="insence-image"
-          // className="object-cover"
-          layout="fill"
-        />
+        <Image src={"/imgs/afro.png"} alt="insence-image" fill sizes="100vw" />
       </motion.div>
 
       <div

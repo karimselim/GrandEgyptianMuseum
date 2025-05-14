@@ -19,7 +19,6 @@ const imgs = [
   img3,
   img4,
 ];
-console.log(imgs);
 
 const Monuments = () => {
   return (
