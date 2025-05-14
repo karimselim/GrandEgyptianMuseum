@@ -5,9 +5,7 @@ import Afrocentrism from "./Afrocentrism";
 import Monuments from "./Monuments";
 import { ParallaxProvider } from "react-scroll-parallax";
 import BookATicket from "./BookATicket";
-// import SeventhScreen from "@/app/components/SeventhScreen/SeventhScreen";
-// import Footer from "@/app/components/Footer/Footer";
-// import { GizaPyramidsGallery } from "@/app/components/common/MonumentsGallery";
+import Feedback from "./Feedback";
 
 const HomePage = () => {
   return (
@@ -18,6 +16,7 @@ const HomePage = () => {
       <Afrocentrism />
       <ParallaxProvider>
         <BookATicket />
+        <Feedback />
       </ParallaxProvider>
     </>
   );

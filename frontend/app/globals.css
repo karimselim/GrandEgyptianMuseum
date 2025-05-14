@@ -60,3 +60,25 @@ a {
 body::-webkit-scrollbar {
   display: none;
 }
+
+.swiper-bullet {
+  position: relative;
+  height: 10px;
+  width: 15px;
+  transition: all ease 0.4s;
+}
+
+.swiper-bullet::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2px;
+  width: 100%;
+  background-color: white;
+}
+
+.swiper-bullet-active {
+  width: 40px;
+}
