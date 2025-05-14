@@ -6,6 +6,7 @@ import Monuments from "./Monuments";
 import { ParallaxProvider } from "react-scroll-parallax";
 import BookATicket from "./BookATicket";
 import Feedback from "./Feedback";
+import Footer from "@/app/components/Footer/Footer";
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
         <BookATicket />
         <Feedback />
       </ParallaxProvider>
+      <Footer />
     </>
   );
 };
