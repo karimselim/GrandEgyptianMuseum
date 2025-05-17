@@ -39,11 +39,11 @@ export default function Footer() {
       <div className="w-full flex flex-row justify-between mt-[100px] px-[10%] py-[100px] bg-[#0a0a0a] max-[660px]:flex-col max-[660px]:gap-[20px] max-[660px]:mt-0">
         <div>
           <a href="/">
-            <h1 className="font-[URW Geometric Bold] m-0">MTIS</h1>
+            <h1 className="font-[URW Geometric Bold] m-0">GEM</h1>
           </a>
           <div className="flex flex-row justify-between items-center gap-[10px] text-[1.5em]">
             <motion.a
-              href="/"
+              href="https://www.instagram.com/grandegyptianmuseum/"
               initial={{ rotateZ: 0 }}
               whileHover={{
                 rotateZ: 350,
@@ -53,7 +53,7 @@ export default function Footer() {
               <AiOutlineInstagram />
             </motion.a>
             <motion.a
-              href="/"
+              href="https://www.facebook.com/GrandEgyptianMuseum"
               initial={{ rotateZ: 0 }}
               whileHover={{
                 rotateZ: 370,
@@ -63,7 +63,7 @@ export default function Footer() {
               <AiFillFacebook />
             </motion.a>
             <motion.a
-              href="/"
+              href="https://x.com/EgyptMuseumGem"
               initial={{ rotateZ: 0 }}
               whileHover={{
                 rotateZ: 350,
@@ -73,7 +73,7 @@ export default function Footer() {
               <AiFillTwitterCircle />
             </motion.a>
             <motion.a
-              href="/"
+              href="https://www.behance.net/search/projects/grand%20egyptian%20museum"
               initial={{ rotateZ: 0 }}
               whileHover={{
                 rotateZ: 370,
@@ -101,13 +101,14 @@ export default function Footer() {
           <div className="w-[30px] h-[2px] bg-white my-[5px] mb-[10px]" />
           <div className="flex flex-col gap-[10px] font-[Daikon Medium] text-[1em] uppercase text-gray-500">
             <p className="m-0">
-              <strong className="text-white">E</strong> : info@dsngrid.com
+              <strong className="text-white">E</strong> : Ramses.kiosk@gem.eg
             </p>
             <p className="m-0">
-              <strong className="text-white">E</strong> : info@dsngrid.com
+              <strong className="text-white">PH</strong> : 02 35317344
             </p>
             <p className="m-0">
-              <strong className="text-white">E</strong> : info@dsngrid.com
+              <strong className="text-white">E</strong> :
+              Tourism_info@easwaaqmisr.com
             </p>
           </div>
         </div>
