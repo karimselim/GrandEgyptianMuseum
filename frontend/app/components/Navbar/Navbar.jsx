@@ -23,30 +23,34 @@ export default function Navbar({ isMenuToggled, setIsMenuToggled }) {
           viewBox="0 0 200 140"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <polygon
-            points="100,20 40,100 160,100"
+          <motion.path
+            d="M100,20 L40,100 L160,100 Z"
             fill="none"
             stroke="#D4AF37"
             strokeWidth="3"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
           />
-          <line
-            x1="70"
-            y1="100"
-            x2="100"
-            y2="40"
+          <motion.path
+            d="M70,100 L100,40"
             stroke="#D4AF37"
             strokeWidth="2"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
           />
-          <line
-            x1="130"
-            y1="100"
-            x2="100"
-            y2="40"
+          <motion.path
+            d="M130,100 L100,40"
             stroke="#D4AF37"
             strokeWidth="2"
+            fill="none"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeInOut", delay: 0.6 }}
           />
-
-          <text
+          <motion.text
             x="50%"
             y="125"
             fontSize="30"
@@ -55,9 +59,12 @@ export default function Navbar({ isMenuToggled, setIsMenuToggled }) {
             fontFamily="serif"
             textAnchor="middle"
             letterSpacing="1.5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.2 }}
           >
             GEM
-          </text>
+          </motion.text>
         </svg>
       </div>
       <div
