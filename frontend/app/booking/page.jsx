@@ -12,6 +12,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import TimePicker from "../components/common/TimePicker";
 import DatePicker from "../components/common/DatePicker";
+import Link from "next/link";
 
 const Booking = () => {
   return (
@@ -66,7 +67,9 @@ const Booking = () => {
             GEM
           </motion.text>
         </svg>
-        <MdHome className="text-5xl text-[#d4af37]" />
+        <Link href="/">
+          <MdHome className="text-5xl text-[#d4af37]" />
+        </Link>
       </header>
 
       <main className="px-[5%] pt-5">

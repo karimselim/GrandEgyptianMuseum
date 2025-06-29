@@ -2,7 +2,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Curtains({ isMenuToggled }) {
-  const arrayLinks = ["Home", "Events", "About", "Book A Ticket"];
+  const arrayLinks = [
+    { name: "Home", href: "/home" },
+    { name: "Events", href: "/events" },
+    { name: "About", href: "/about" },
+    { name: "Book A Ticket", href: "/booking" },
+  ];
 
   return (
     <div className="fixed top-0 left-0 h-0 w-full z-10">
@@ -65,7 +70,7 @@ export default function Curtains({ isMenuToggled }) {
                     }}
                     exit={{ opacity: 0 }}
                   >
-                    <a href="/">{ele}</a>
+                    <a href={ele.href}>{ele.name}</a>
                   </motion.li>
                 );
               })}
