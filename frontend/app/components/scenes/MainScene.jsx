@@ -5,7 +5,6 @@ import { Model } from "../models/Tutankhamun";
 import { useProgress } from "@react-three/drei";
 
 const lerp = (a, b, t) => a + (b - a) * t;
-//test
 
 const HoverControls = ({
   minPolarAngle,
@@ -22,8 +21,13 @@ const HoverControls = ({
   });
   const currentAngles = useRef({ ...desiredAngles });
   const isHovered = useRef(false);
+  let lastMove = 0;
 
   const onPointerMove = (event) => {
+    const now = performance.now();
+    if (now - lastMove < 50) return; // throttle
+    lastMove = now;
+
     if (!isHovered.current) return;
 
     const { clientX, clientY } = event;
@@ -54,7 +58,7 @@ const HoverControls = ({
     };
   }, [gl, minAzimuthAngle, maxAzimuthAngle, minPolarAngle, maxPolarAngle]);
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     currentAngles.current.polar = lerp(
       currentAngles.current.polar,
       desiredAngles.polar,
@@ -79,12 +83,13 @@ const HoverControls = ({
 
 const Scene = () => {
   const progress = useProgress();
+
   return (
-    <Canvas camera={{ position: [0, 250, 700], fov: 45 }}>
-      <Suspense>
-        <ambientLight intensity={25} />
-        <directionalLight position={[5, 10, 5]} intensity={12} castShadow />
-        <pointLight position={[0, 200, 200]} intensity={6} />
+    <Canvas dpr={[1, 1.5]} camera={{ position: [0, 250, 700], fov: 45 }}>
+      <Suspense fallback={<div style={{ color: "white" }}>Loading...</div>}>
+        <ambientLight intensity={4} />
+        <directionalLight position={[5, 10, 5]} intensity={8} castShadow />
+        {/* Removed point light for performance */}
 
         <HoverControls
           minPolarAngle={Math.PI / 3}
