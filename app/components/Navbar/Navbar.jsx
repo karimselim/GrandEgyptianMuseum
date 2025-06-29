@@ -15,13 +15,14 @@ export default function Navbar({ isMenuToggled, setIsMenuToggled }) {
         },
       }}
     >
-      <div className="px-8 py-4 text-white font-[Daikon] text-2xl mr-auto">
+      <div className="px-8 py-4 text-white font-[Daikon] text-2xl mr-auto cursor-hover-target">
         {/* Grand Egyptian Museum */}
         <svg
           width="100"
           height="100"
           viewBox="0 0 200 140"
           xmlns="http://www.w3.org/2000/svg"
+          className="cursor-hover-target"
         >
           <motion.path
             d="M100,20 L40,100 L160,100 Z"
@@ -82,7 +83,7 @@ export default function Navbar({ isMenuToggled, setIsMenuToggled }) {
           easing={"ease-in"}
           hideOutline={false}
         />
-        <div className="relative w-10 h-full cursor-pointer">
+        <div className="relative w-10 h-full cursor-pointer cursor-hover-target">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <motion.span
               style={{ position: "relative" }}

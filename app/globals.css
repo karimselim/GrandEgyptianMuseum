@@ -41,6 +41,7 @@ a {
 
 * {
   box-sizing: border-box;
+  cursor: none !important;
 }
 
 .active-thumb {
