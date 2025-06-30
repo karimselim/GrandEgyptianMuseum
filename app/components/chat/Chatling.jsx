@@ -5,10 +5,7 @@ import Script from "next/script";
 export default function ChatlingWidget() {
   return (
     <>
-      <div
-        id="chatling-inline-bot"
-        style={{ width: "100%", height: "300px" }}
-      ></div>
+      <div id="chatling-inline-bot"></div>
 
       <Script
         id="chatling-embed-script"
