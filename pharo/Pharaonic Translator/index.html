@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Pharaonic Translator </title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <h2 id="pageTitle">Convert Your Name to Hieroglyphs</h2>
+
+    <div class="input-group">
+      <input type="text" id="nameInput" class="hiero-input" placeholder="Type your name...">
+
+      <!-- 🎤 زر المايك + 🌐 زر اللغة -->
+      <div class="lang-dropdown">
+        <div class="lang-controls">
+          <button onclick="startSpeechRecognition()" class="mic-btn" title="Speak your name">🎙️</button>
+          <button onclick="toggleLangMenu()" class="lang-btn">🌐</button>
+        </div>
+        <div id="langMenu" class="lang-menu hidden">
+          <div onclick="setLanguage('ar')">العربية</div>
+          <div onclick="setLanguage('en')">English</div>
+          <div onclick="setLanguage('fr')">Français</div>
+          <div onclick="setLanguage('es')">Español</div>
+          <div onclick="setLanguage('hi')">हिन्दी</div>
+          <div onclick="setLanguage('de')">Deutsch</div>
+          <div onclick="setLanguage('it')">Italiano</div>
+          <div onclick="setLanguage('zh')">中文</div>
+          <div onclick="setLanguage('tr')">Türkçe</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cardsOutput"></div>
+
+    <div class="action-btns">
+      <button class="assistant-btn" id="copyBtn" onclick="copyHieroglyphs()">📋 Copy</button>
+      <button class="assistant-btn" id="downloadBtn" onclick="downloadHieroglyphs()">📥 Download Image</button>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

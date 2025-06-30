@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function Curtains({ isMenuToggled }) {
   const arrayLinks = [
@@ -70,7 +71,7 @@ export default function Curtains({ isMenuToggled }) {
                     }}
                     exit={{ opacity: 0 }}
                   >
-                    <a href={ele.href}>{ele.name}</a>
+                    <Link href={ele.href}>{ele.name}</Link>
                   </motion.li>
                 );
               })}

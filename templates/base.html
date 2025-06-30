@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GEM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/pharaoh.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">GEM Virtual Assistant</h4>
+                    <p class="chatbox__description--header">Welcome to GEM. How can I assist you today?</p>
+                </div>
+            </div>
+
+            <div class="chatbox__messages">
+                <div id="chat-messages"></div>
+
+                <template id="typing-template">
+                    <div class="chatbox__messages__item chatbox__messages__item--visitor fade-in" id="gem-indicator">
+                        <div class="typing-container">
+                            <span class="typing-text">🤖 جيم يكتب الآن</span>
+                            <div class="typing-indicator">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <button id="scrollToBottomBtn">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 16L6 10H18L12 16Z" fill="#b8860b"/>
+                </svg>
+              </button>
+              
+
+            <!-- مؤشر الصوت -->
+            <div id="voice-indicator" class="hidden">
+                <div class="equalizer">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="chatbox__footer">
+                <form id="chat-form" style="display: flex; align-items: center; width: 100%; gap: 10px;">
+                    <input type="text" id="chat-input" placeholder="Write a message..." 
+                        style="flex: 1; padding: 10px; border-radius: 20px; border: 1px solid #ccc;">
+                    
+                    <button type="submit" id="send-btn" class="chatbox__send--footer send__button" 
+                        style="padding: 10px 15px; border-radius: 20px; background: var(--primaryGradient); color: white; border: none; cursor: pointer;">
+                        Send
+                    </button>
+
+                    <button type="button" id="voice-btn" title="اضغط للتحدث"
+                        style="padding: 10px; border-radius: 50%; border: none; background: #eee; cursor: pointer;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#333" viewBox="0 0 24 24">
+                            <path d="M12 14q-1.25 0-2.125-.875T9 11V5q0-1.25.875-2.125T12 2q1.25 0 2.125.875T15 5v6q0 1.25-.875 2.125T12 14Zm-1 7v-3.1q-2.875-.35-4.938-2.538T4 10h2q0 2.5 1.75 4.25T12 16q2.5 0 4.25-1.75T18 10h2q0 2.875-2.063 5.062T13 17.9V21h-2Z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- زر فتح الشات -->
+        <div class="chatbox__button">
+            <button id="chatbox-button"><img src="{{ url_for('static', filename='images/abo2.png') }}" /></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $SCRIPT_ROOT = {{ request.script_root|tojson }};
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

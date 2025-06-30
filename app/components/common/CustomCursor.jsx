@@ -37,8 +37,8 @@ export default function CustomCursor() {
 
     const handleHoverIn = () => {
       setHovering(true);
-      outerControls.start({ scale: 2 });
-      innerControls.start({ scale: 0.5 });
+      outerControls.start({ scale: 2.5 });
+      innerControls.start({ scale: 0.25 });
     };
 
     const handleHoverOut = () => {

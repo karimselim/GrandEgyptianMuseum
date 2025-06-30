@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AnimatedLayout from "./components/common/AnimatedLayout";
+import CustomCursor from "./components/common/CustomCursor";
+import ChatlingWidget from "./components/chat/Chatling";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AnimatedLayout>{children}</AnimatedLayout>
+        <AnimatedLayout>
+          {children}
+          <ChatlingWidget />
+          <CustomCursor />
+        </AnimatedLayout>
       </body>
     </html>
   );

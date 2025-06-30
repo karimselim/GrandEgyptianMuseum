@@ -7,6 +7,7 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import BookATicket from "./BookATicket";
 import Feedback from "./Feedback";
 import Footer from "@/app/components/Footer/Footer";
+import HieroglyphConverter from "@/app/components/chat/HieroglyphConverter";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Landing />
       <About />
       <Monuments />
+      <HieroglyphConverter />
       <Afrocentrism />
       <ParallaxProvider>
         <BookATicket />
