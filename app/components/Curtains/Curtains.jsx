@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Curtains({ isMenuToggled }) {
   const arrayLinks = [
     { name: "Home", href: "/home" },
-    { name: "Events", href: "/events" },
-    { name: "About", href: "/about" },
+    { name: "AfroCentric", href: "https://afrocentric-ebon.vercel.app/" },
+    { name: "Visitor Opinions", href: "https://opinions-lake.vercel.app/" },
     { name: "Book A Ticket", href: "/booking" },
   ];
 

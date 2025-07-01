@@ -51,7 +51,7 @@ export default function Feedback() {
                   className="object-cover rounded-full"
                 />
                 <p className="text-[1.1em] font-['Daikon_Medium'] text-white">
-                  - Morad Hafez, CEO of MTIS
+                  - Morad Hafez, Software Engineer.
                 </p>
               </div>
             </SwiperSlide>
@@ -72,7 +72,7 @@ export default function Feedback() {
                   className="object-cover rounded-full"
                 />
                 <p className="text-[1.1em] font-['Daikon_Medium'] text-white">
-                  - Hady Moait, CEO of MTIS.
+                  - Hady Moait, ML Engineer.
                 </p>
               </div>
             </SwiperSlide>
@@ -93,7 +93,7 @@ export default function Feedback() {
                   className="object-cover rounded-full"
                 />
                 <p className="text-[1.1em] font-['Daikon_Medium'] text-white">
-                  - Karim Selim, CEO of MTIS
+                  - Karim Selim, Frontend Developer.
                 </p>
               </div>
             </SwiperSlide>

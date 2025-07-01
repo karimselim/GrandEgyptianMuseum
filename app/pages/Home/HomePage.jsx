@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Landing from "./Landing";
 import About from "./About";
 import Afrocentrism from "./Afrocentrism";
@@ -8,8 +8,11 @@ import BookATicket from "./BookATicket";
 import Feedback from "./Feedback";
 import Footer from "@/app/components/Footer/Footer";
 import HieroglyphConverter from "@/app/components/chat/HieroglyphConverter";
+import Ar from "./Ar";
+import VideoPlayer from "./VideoPlayer";
 
 const HomePage = () => {
+  const [playState, setPlayState] = useState(false);
   return (
     <>
       <Landing />
@@ -17,11 +20,15 @@ const HomePage = () => {
       <Monuments />
       <HieroglyphConverter />
       <Afrocentrism />
+      <Ar setPlayState={setPlayState} />
       <ParallaxProvider>
         <BookATicket />
         <Feedback />
       </ParallaxProvider>
       <Footer />
+      <div>
+        <VideoPlayer playState={playState} setPlayState={setPlayState} />
+      </div>
     </>
   );
 };

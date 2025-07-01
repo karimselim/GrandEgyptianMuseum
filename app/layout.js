@@ -3,6 +3,7 @@ import "./globals.css";
 import AnimatedLayout from "./components/common/AnimatedLayout";
 import CustomCursor from "./components/common/CustomCursor";
 import ChatlingWidget from "./components/chat/Chatling";
+import Script from "next/script"; // 👈 Import this
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,6 +23,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://aframe.io/releases/1.5.0/aframe.min.js"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
