@@ -25,7 +25,7 @@ const HoverControls = ({
 
   const onPointerMove = (event) => {
     const now = performance.now();
-    if (now - lastMove < 50) return; // throttle
+    if (now - lastMove < 50) return;
     lastMove = now;
 
     if (!isHovered.current) return;
@@ -84,12 +84,25 @@ const HoverControls = ({
 const Scene = () => {
   const progress = useProgress();
 
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const width = window.innerWidth;
+      if (width < 640) setScale(2.3);
+      else setScale(3);
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
+
   return (
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 250, 700], fov: 45 }}>
       <Suspense fallback={<div style={{ color: "white" }}>Loading...</div>}>
         <ambientLight intensity={4} />
         <directionalLight position={[5, 10, 5]} intensity={8} castShadow />
-        {/* Removed point light for performance */}
 
         <HoverControls
           minPolarAngle={Math.PI / 3}
@@ -100,7 +113,8 @@ const Scene = () => {
           damping={0.1}
         />
 
-        <Model />
+        {/* ✅ Pass scale to the model */}
+        <Model scale={scale} />
       </Suspense>
     </Canvas>
   );

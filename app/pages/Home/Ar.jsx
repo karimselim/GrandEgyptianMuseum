@@ -25,12 +25,12 @@ const Ar = ({ setPlayState }) => {
       <aside className="about-right flex-basis-[56%] max-md:flex-basis-full">
         <h2 className="text-[45px] text-white my-2">Augmented Reality</h2>
         <Link
-          className="font-semibold mb-4 text-xl underline text-blue-600"
-          href="/"
+          className="font-semibold mb-4 text-xl underline !text-blue-400"
+          href="https://damietta-myr5.vercel.app/"
         >
           Click here to use it
         </Link>
-        <p className="text-[#eee] text-[18px] mb-6 leading-relaxed">
+        <p className="text-[#eee] mb-6 leading-relaxed">
           In the Grand Egyptian Museum project, we introduced Augmented Reality
           to transform how visitors engage with ancient artifacts. Instead of
           simply looking at static displays, users can now explore 3D
@@ -39,7 +39,7 @@ const Ar = ({ setPlayState }) => {
           the past.
         </p>
 
-        <p className="text-[#eee] text-[18px] mb-6 leading-relaxed">
+        <p className="text-[#eee] mb-6 leading-relaxed">
           Through AR, we digitally recreate scenes from ancient Egyptian life —
           temples, rituals, daily activities — allowing visitors to step into
           environments that would otherwise be lost to time. It turns a
@@ -47,7 +47,7 @@ const Ar = ({ setPlayState }) => {
           storytelling with cutting-edge technology.
         </p>
 
-        <p className="text-white text-[18px] mb-6 leading-relaxed">
+        <p className="text-white mb-6 leading-relaxed">
           This technology also opens new doors for education. Students and
           guests can interact with artifacts in ways that foster curiosity and
           deeper understanding. It brings history to life, making it not just

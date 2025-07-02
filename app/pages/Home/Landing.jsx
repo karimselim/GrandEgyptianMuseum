@@ -8,7 +8,6 @@ import {
 import { useRef, useEffect, useState, useMemo } from "react";
 import Scene from "@/app/components/scenes/MainScene";
 import CurvedText from "@/app/components/common/CurvedText";
-// import SandCanvasParticles from "@/app/components/common/SandCanvasParticles";
 import SandCanvasParticles from "@/app/components/canvas/SandCanvasParticles";
 
 const HIEROGLYPHS = ["𓀀", "𓀁", "𓀂", "𓀃"];
@@ -18,6 +17,19 @@ const Landing = () => {
   const { scrollYProgress } = useScroll({ container: containerRef });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const [isMounted, setIsMounted] = useState(false);
+  const [modelScale, setModelScale] = useState(3);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const width = window.innerWidth;
+      if (width < 640) setModelScale(2.3); // mobile
+      else setModelScale(3); // desktop
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -37,12 +49,19 @@ const Landing = () => {
     }));
   }, [isMounted]);
 
+  // Dynamically set text position based on model scale
+  const getMarginTop = () => {
+    if (modelScale === 3) return "6rem"; // desktop
+    if (modelScale === 2.3) return "22rem"; // mobile
+    return "7rem"; // fallback
+  };
+
   return (
     <div
       className="relative w-screen h-screen overflow-hidden"
       ref={containerRef}
     >
-      {/* Optimized canvas particles */}
+      {/* Canvas background particles */}
       <SandCanvasParticles />
 
       {/* Floating glyphs */}
@@ -71,26 +90,35 @@ const Landing = () => {
           </motion.div>
         ))}
 
-      {/* Shimmering overlay */}
+      {/* Shimmering light animation */}
       <motion.div
         className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,#5e2c0433_50%,transparent_100%)] pointer-events-none"
         animate={{ x: ["-100%", "100%"] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* Scaled 3D scene */}
+      {/* 3D scene */}
       <motion.div className="absolute inset-0" style={{ scale, zIndex: 0 }}>
         <Scene />
       </motion.div>
 
-      {/* Header text */}
+      {/* Curved animated title */}
       <AnimatePresence>
-        <div style={{ textAlign: "center", padding: "2rem", zIndex: 3 }}>
-          <CurvedText text="Grand Egyptian Museum" fontSize="58px" />
+        <div
+          style={{
+            textAlign: "center",
+            zIndex: 3,
+            marginTop: getMarginTop(),
+          }}
+        >
+          <CurvedText
+            text="Grand Egyptian Museum"
+            fontSize={`${modelScale * 21}px`}
+          />
         </div>
       </AnimatePresence>
 
-      {/* Subtle rotating glow */}
+      {/* Rotating glow background */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{

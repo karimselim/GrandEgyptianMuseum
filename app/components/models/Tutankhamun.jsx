@@ -1,11 +1,11 @@
 import React from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Model(props) {
+export function Model({ scale = 3, ...props }) {
   const { nodes, materials } = useGLTF("/models/Tutankhamun.glb");
 
   return (
-    <group {...props} dispose={null} scale={3} position={[0, -100, 0]}>
+    <group {...props} dispose={null} scale={scale} position={[0, -100, 0]}>
       <mesh
         geometry={nodes.Default_150150150.geometry}
         material={materials["Default 150:150:150"]}
