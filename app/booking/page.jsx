@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { MdHome } from "react-icons/md";
 import DropdownMenu from "../components/common/DropdownMenu";
@@ -13,8 +13,37 @@ import { IoMdMail } from "react-icons/io";
 import TimePicker from "../components/common/TimePicker";
 import DatePicker from "../components/common/DatePicker";
 import Link from "next/link";
+import PayPalButton from "../components/common/PayPalButton";
 
 const Booking = () => {
+  const [ticketBreakdowns, setTicketBreakdowns] = useState({
+    egyptian: {},
+    nonEgyptian: {},
+    AR: {},
+  });
+
+  const handleTicketChange = (groupKey, { breakdown = {} }) => {
+    const updatedBreakdowns = {
+      ...ticketBreakdowns,
+      [groupKey]: breakdown,
+    };
+    setTicketBreakdowns(updatedBreakdowns);
+
+    // Compute total tickets and total price safely
+    let totalTickets = 0;
+    let totalPrice = 0;
+
+    Object.values(updatedBreakdowns).forEach((group) => {
+      Object.values(group).forEach(({ quantity, subtotal }) => {
+        totalTickets += quantity;
+        totalPrice += subtotal;
+      });
+    });
+
+    console.log("🎫 Total tickets:", totalTickets);
+    console.log("💰 Total price:", totalPrice, "EGP");
+  };
+
   return (
     <div className="h-screen pb-36">
       <header className="flex items-center justify-between mx-[5%] border-b border-b-white">
@@ -84,17 +113,17 @@ const Booking = () => {
             <DropdownMenu
               label="Egyptians"
               groupKey="egyptian"
-              onChange={() => {}}
+              onChange={(data) => handleTicketChange("egyptian", data)}
             />
             <DropdownMenu
               label="Non Egyptians"
               groupKey="nonEgyptian"
-              onChange={() => {}}
+              onChange={(data) => handleTicketChange("nonEgyptian", data)}
             />
             <DropdownMenu
-              label="Expatriates"
-              groupKey="expatriate"
-              onChange={() => {}}
+              label="AR"
+              groupKey="AR"
+              onChange={(data) => handleTicketChange("AR", data)}
             />
           </aside>
         </div>
@@ -152,13 +181,18 @@ const Booking = () => {
             </div>
           </form>
 
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center mt-6 relative w-fit mx-auto">
             <button
-              type="submit"
-              className="bg-[#d4af37] text-black font-semibold px-8 py-2 rounded-md hover:bg-[#e6c84c] transition cursor-pointer"
+              type="button"
+              className="bg-[#d4af37] text-black font-semibold px-8 py-2 rounded-md hover:bg-[#e6c84c] transition cursor-pointer z-10"
             >
-              Next
+              Complete Booking
             </button>
+
+            {/* Overlay PayPal button container */}
+            <div className="absolute inset-0 z-20 opacity-0 pointer-events-auto">
+              <PayPalButton />
+            </div>
           </div>
         </div>
       </main>
@@ -225,7 +259,7 @@ const Booking = () => {
             <FaPhoneAlt />: 02 35317344
           </div>
           <div className="flex items-center gap-2">
-            <IoMdMail />:
+            <IoMdMail />:{" "}
             <a href="mailto:Ramses.kiosk@gem.eg">Ramses.kiosk@gem.eg</a>
           </div>
         </aside>

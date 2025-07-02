@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Script from "next/script";
 import InitialLoader from "./components/common/InitialLoader";
 import Navbar from "./components/Navbar/Navbar";
 import Curtains from "./components/Curtains/Curtains";
@@ -16,6 +17,12 @@ export default function Home() {
         <InitialLoader onFinish={() => setLoading(false)} />
       ) : (
         <>
+          {/* ✅ PayPal Script for the whole app */}
+          <Script
+            src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"
+            strategy="afterInteractive"
+          />
+
           <Navbar
             isMenuToggled={isMenuToggled}
             setIsMenuToggled={setIsMenuToggled}

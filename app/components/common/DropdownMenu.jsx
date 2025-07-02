@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 
-// 💰 Ticket pricing per group
 const PRICES = {
   egyptian: {
     Adult: 150,
@@ -15,10 +14,10 @@ const PRICES = {
     Child: 250,
     Student: 300,
   },
-  expatriate: {
-    Adult: 200,
-    Child: 100,
-    Student: 150,
+  AR: {
+    Adult: 50,
+    Child: 20,
+    Student: 25,
   },
 };
 
@@ -82,10 +81,10 @@ export default function DropdownMenu({
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative w-80 mx-auto z-10">
-      {/* Dropdown Toggle */}
+    <div ref={dropdownRef} className="relative w-80 mx-auto z-[999]">
+      {/* Toggle Button */}
       <div
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((prev) => !prev)}
         className="flex justify-between items-center px-5 h-14 bg-[#d4af37] text-black rounded-xl cursor-pointer border border-black"
       >
         <span className="font-semibold text-base">{label}</span>
@@ -105,7 +104,7 @@ export default function DropdownMenu({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.2 }}
-            className="absolute w-full mt-2 bg-[#d4af37] border border-black shadow-xl rounded-xl py-2"
+            className="absolute w-full mt-2 bg-[#d4af37] border border-black shadow-xl rounded-xl py-2 z-[999]"
           >
             {options.map((option) => {
               const quantity = quantities[option] || 0;
