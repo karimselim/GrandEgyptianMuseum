@@ -15,20 +15,27 @@ const HIEROGLYPHS = ["𓀀", "𓀁", "𓀂", "𓀃"];
 const Landing = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ container: containerRef });
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
   const [isMounted, setIsMounted] = useState(false);
   const [modelScale, setModelScale] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Scroll-based scaling (disabled on mobile)
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? [1, 1] : [1, 1.1]
+  );
 
   useEffect(() => {
-    const updateScale = () => {
+    const updateDevice = () => {
       const width = window.innerWidth;
-      if (width < 640) setModelScale(2.3); // mobile
-      else setModelScale(3); // desktop
+      setIsMobile(width < 640);
+      setModelScale(width < 640 ? 2.3 : 3);
     };
 
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+    updateDevice();
+    window.addEventListener("resize", updateDevice);
+    return () => window.removeEventListener("resize", updateDevice);
   }, []);
 
   useEffect(() => {
@@ -49,11 +56,10 @@ const Landing = () => {
     }));
   }, [isMounted]);
 
-  // Dynamically set text position based on model scale
   const getMarginTop = () => {
-    if (modelScale === 3) return "6rem"; // desktop
-    if (modelScale === 2.3) return "22rem"; // mobile
-    return "7rem"; // fallback
+    if (modelScale === 3) return "6rem";
+    if (modelScale === 2.3) return "22rem";
+    return "7rem";
   };
 
   return (
@@ -97,9 +103,9 @@ const Landing = () => {
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* 3D scene */}
+      {/* 3D scene with responsive scale */}
       <motion.div className="absolute inset-0" style={{ scale, zIndex: 0 }}>
-        <Scene />
+        <Scene disableInteraction={isMobile} modelScale={modelScale} />
       </motion.div>
 
       {/* Curved animated title */}

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { Model } from "../models/Tutankhamun";
 import { useProgress } from "@react-three/drei";
 
+// Linear interpolation
 const lerp = (a, b, t) => a + (b - a) * t;
 
 const HoverControls = ({
@@ -81,22 +82,9 @@ const HoverControls = ({
   return null;
 };
 
-const Scene = () => {
+// ✅ Accept props: disableInteraction and modelScale
+const Scene = ({ disableInteraction = false, modelScale = 3 }) => {
   const progress = useProgress();
-
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const updateScale = () => {
-      const width = window.innerWidth;
-      if (width < 640) setScale(2.3);
-      else setScale(3);
-    };
-
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
-  }, []);
 
   return (
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 250, 700], fov: 45 }}>
@@ -104,17 +92,19 @@ const Scene = () => {
         <ambientLight intensity={4} />
         <directionalLight position={[5, 10, 5]} intensity={8} castShadow />
 
-        <HoverControls
-          minPolarAngle={Math.PI / 3}
-          maxPolarAngle={Math.PI / 2.5}
-          minAzimuthAngle={-Math.PI / 12}
-          maxAzimuthAngle={Math.PI / 12}
-          radius={700}
-          damping={0.1}
-        />
+        {/* ❌ Disable hover on mobile for performance */}
+        {!disableInteraction && (
+          <HoverControls
+            minPolarAngle={Math.PI / 3}
+            maxPolarAngle={Math.PI / 2.5}
+            minAzimuthAngle={-Math.PI / 12}
+            maxAzimuthAngle={Math.PI / 12}
+            radius={700}
+            damping={0.1}
+          />
+        )}
 
-        {/* ✅ Pass scale to the model */}
-        <Model scale={scale} />
+        <Model scale={modelScale} />
       </Suspense>
     </Canvas>
   );
